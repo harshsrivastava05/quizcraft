@@ -8,6 +8,8 @@ import TypingAnimation from "@/components/ui/typing-animation";
 import GradualSpacing from "@/components/ui/gradual-spacing";
 import Ripple from "@/components/ui/ripple";
 import ShimmerButton from "@/components/ui/shimmer-button";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -34,17 +36,16 @@ export default function Home() {
           in seconds.
         </h1>
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-          QuizCraft allows you to have conversations with any PDF document. Simply
-          upload your file and start asking questions right away.
+          QuizCraft allows you to have conversations with any PDF document.
+          Simply upload your file and start asking questions right away.
         </p>
-        <ShimmerButton className="mt-5 shadow-2xl ">
-        <span className="flex justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-        Get started{' '}
-        <ArrowRight className='ml-2 h-5 w-5' />
-        </span>
-        </ShimmerButton>
-
-        <Ripple />
+        <RegisterLink>
+          <ShimmerButton className="mt-5 shadow-2xl ">
+            <span className="flex justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+              Get started <ArrowRight className="ml-2 h-5 w-5" />
+            </span>
+          </ShimmerButton>
+        </RegisterLink>
       </MaxWidthWrapper>
 
       {/* value proposition section */}
@@ -112,7 +113,8 @@ export default function Home() {
               />
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Chatting to your PDF files has never been easier than with QuizCraft.
+              Chatting to your PDF files has never been easier than with
+              QuizCraft.
             </p>
           </div>
         </div>

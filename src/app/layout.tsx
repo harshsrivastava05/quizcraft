@@ -3,6 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import ClientProviders from "@/components/ClientProviders";
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,12 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className={cn("min-h-screen font-sans antialiased grainy", ``)}>
-        <ClientProviders>
-          <Navbar />
-          {children}
-        </ClientProviders>
-      </body>
+      <Providers>
+        <body className={cn("min-h-screen font-sans antialiased grainy", ``)}>
+          <ClientProviders>
+            <Navbar />
+            {children}
+          </ClientProviders>
+        </body>
+      </Providers>
     </html>
   );
 }
