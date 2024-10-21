@@ -39,13 +39,14 @@ export default function Home() {
           QuizCraft allows you to have conversations with any PDF document.
           Simply upload your file and start asking questions right away.
         </p>
-        <RegisterLink>
+
+        <Link href="/dashboard">
           <ShimmerButton className="mt-5 shadow-2xl ">
             <span className="flex justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
               Get started <ArrowRight className="ml-2 h-5 w-5" />
             </span>
           </ShimmerButton>
-        </RegisterLink>
+        </Link>
       </MaxWidthWrapper>
 
       {/* value proposition section */}
