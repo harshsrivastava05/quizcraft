@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id    String  @id @map("_id")  // MongoDB ObjectId for primary key
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectId for primary key
   email String  @unique
 
   // Relations
@@ -23,16 +26,43 @@ model User {
 }
 
 model File {
-  id     String  @id @map("_id") @db.ObjectId
-  name   String
-  url    String
-  userId String  
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectId
+  name         String
+  url          String
+  key          String
+  uploadStatus UploadStatus @default(PENDING)
+  
+  // Relation to User
+  userId String  @db.ObjectId
   user   User    @relation("UserFiles", fields: [userId], references: [id])
+
+  // Relation to messages
+  messages Message[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Message {
-  id      String  @id @map("_id") @db.ObjectId
-  content String
-  userId  String 
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectId
+  content      String    
+  isUserMessage Boolean
+
+  // Relation to User
+  userId  String  @db.ObjectId
   user    User    @relation("UserMessages", fields: [userId], references: [id])
+
+  // Relation to File
+  fileId  String? @db.ObjectId
+  file    File?   @relation(fields: [fileId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum UploadStatus {
+  PENDING
+  PROCESSING
+  FAILED
+  SUCCESS
 }
