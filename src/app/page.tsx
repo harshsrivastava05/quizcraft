@@ -6,10 +6,7 @@ import { cn } from "@/lib/utils";
 import AnimatedShinyText from "@/components/ui/animated-shiny-text";
 import TypingAnimation from "@/components/ui/typing-animation";
 import GradualSpacing from "@/components/ui/gradual-spacing";
-import Ripple from "@/components/ui/ripple";
 import ShimmerButton from "@/components/ui/shimmer-button";
-import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (

@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import ClientProviders from "@/components/ClientProviders";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
-import Ripple from "@/components/ui/ripple";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" >
       <Providers>
         <body className={cn("min-h-screen font-sans antialiased grainy", ``)}>
-          <Ripple />
+          
           <ClientProviders>
             <Navbar />
             {children}

@@ -3,44 +3,43 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/sign-in',
-        destination: '/api/auth/login',
+        source: "/sign-in",
+        destination: "/api/auth/login",
         permanent: true,
       },
       {
-        source: '/sign-up',
-        destination: '/api/auth/register',
+        source: "/sign-up",
+        destination: "/api/auth/register",
         permanent: true,
       },
-    ]
-  },
-
-  webpack: (
-    config,
-    { buildId, dev, isServer, defaultLoaders, webpack }
-  ) => {
-    config.resolve.alias.canvas = false;
-    config.resolve.alias.encoding = false;
-    return config;
+    ];
   },
 
   images: {
-    domains: ['lh3.googleusercontent.com'], // Allow external images from this domain
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**", // Allow any path under this hostname
       },
-    ],
-    localPatterns: [
       {
-        // Match any images in the public directory
-        pathname: "/**", // Allow all images in any subfolder of the public directory
-        search: "",
+        protocol: "https",
+        hostname: "gravatar.com", // Support gravatar.com images
+        port: "",
+        pathname: "/**", // Allow any path under this hostname
       },
     ],
+  },
+
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Disable certain packages if necessary
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+
+    // Additional customizations can go here
+
+    return config;
   },
 };
 
