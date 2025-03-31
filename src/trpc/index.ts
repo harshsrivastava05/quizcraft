@@ -13,6 +13,8 @@ export const appRouter = router({
   authCallback: publicProcedure.query(async (): Promise<AuthCallbackResult> => {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
+    // check if the user is authenticated
+    if (!user) throw new TRPCError({ code: "UNAUTHORIZED" });
 
     if (!user.id || !user.email) throw new TRPCError({ code: "UNAUTHORIZED" });
 
